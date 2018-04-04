@@ -1,28 +1,52 @@
-.App {
+html {
+  background: #018ded url(https://picsum.photos/1500/1000/?random);
+  background-size: cover;
+  font-family: 'helvetica neue';
   text-align: center;
+  font-size: 20px;
+}
+.code {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.code-input {
+  margin: 5px;
+  padding: 2px;
+  border: 2px solid black;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.code-output {
+  margin: 5px;
+  padding: 2px;
+  border: 2px solid black;
+}
+.code-input,
+.code-output {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+textarea {
+  -webkit-appearance: textarea;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  flex-direction: column;
+  resize: auto;
+  cursor: text;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border-width: 1px;
+  border-style: solid;
+  border-color: initial;
+  border-image: initial;
+  padding: 2px;
+  font-family: monospace;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1,
+h2 {
+  font-family: sans-serif;
+  text-align: center;
 }
