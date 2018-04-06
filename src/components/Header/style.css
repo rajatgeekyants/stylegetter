@@ -1,0 +1,29 @@
+#header {
+  padding: 1rem;
+  align-items: center;
+}
+
+h2 {
+  display: grid;
+  margin-left: 3vw;
+  grid-template-columns: 1fr auto 1fr;
+  grid-gap: 20px;
+  align-items: center;
+}
+
+h2:before,
+h2:after {
+  display: block;
+  content: '';
+  height: 10px;
+  background: linear-gradient(to left, #ffc600, transparent);
+}
+
+h2:after {
+  background: linear-gradient(to right, #ffc600, transparent);
+}
+h1,
+h2 {
+  font-family: sans-serif;
+  text-align: center;
+}
