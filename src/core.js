@@ -1,4 +1,4 @@
-import {parse} from 'babylon';
+import { parse } from 'babylon';
 import generate from 'babel-generator';
 import traverse from 'babel-traverse';
 import { throws } from 'assert';
@@ -14,8 +14,8 @@ const options = {
     'classProperties',
     'flow',
     'doExpressions',
-    'objectRestSpread',
-  ],
+    'objectRestSpread'
+  ]
 };
 
 function generateStyleSheet(styleNames, styleProperties) {
@@ -35,10 +35,10 @@ function generateStyleSheet(styleNames, styleProperties) {
                 styleProperties[index]
               );
             })
-          ),
+          )
         ]
       )
-    ),
+    )
   ]);
 }
 
@@ -96,26 +96,30 @@ export function convertCode(code) {
           objectExpressionArray.push(path.node.value.expression);
         }
       }
-    },
+    }
   });
-  const generatedStyleSheet = generateStyleSheet(
-    styleNames,
-    objectExpressionArray
-  );
-  console.log('----STYLESHEET-----');
-  const stylesheet = generate(generatedStyleSheet).code;
-  codeToReturn = `----STYLESHEET----- \n ${stylesheet}`;
-  console.log(codeToReturn);
+  if (objectExpressionArray.length > 0) {
+    const generatedStyleSheet = generateStyleSheet(
+      styleNames,
+      objectExpressionArray
+    );
 
-  // replacing style object
-  nodesToReplace.forEach((styleNode, index) => {
-    let replaceWithThis = generateStyles(styleNames[index]);
-    styleNode.replaceWith(replaceWithThis);
-  });
+    console.log('----STYLESHEET-----');
+    const stylesheet = generate(generatedStyleSheet).code;
+    codeToReturn = `//----STYLESHEET----- \n ${stylesheet}`;
+    console.log(codeToReturn);
+
+    // replacing style object
+    nodesToReplace.forEach((styleNode, index) => {
+      let replaceWithThis = generateStyles(styleNames[index]);
+      styleNode.replaceWith(replaceWithThis);
+    });
+  }
+
   const output = generate(ast);
-  console.log('----CODE----');
+  console.log('---CODE---');
   const outputcode = output.code;
-  codeToReturn = codeToReturn + `\n ----CODE---- \n ${outputcode}`;
+  codeToReturn = codeToReturn + `\n//----CODE----\n${outputcode}`;
   console.log(codeToReturn);
   return codeToReturn;
 }
