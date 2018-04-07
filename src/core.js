@@ -1,7 +1,7 @@
 import { parse } from 'babylon';
 import generate from 'babel-generator';
-// import { babelTypes } from 'babel-types';
 import traverse from 'babel-traverse';
+import { throws } from 'assert';
 const babelTypes = require('@babel/types');
 
 const uuidv1 = require('uuid/v1');
@@ -33,10 +33,6 @@ function generateStyleSheet(styleNames, styleProperties) {
               return babelTypes.objectProperty(
                 babelTypes.identifier(item),
                 styleProperties[index]
-                // babelTypes.objectExpression([
-                //   generateStylePropertyWithValue('height', 40),
-                //   generateStylePropertyWithValue('width', 50)
-                // ])
               );
             })
           )
@@ -47,7 +43,13 @@ function generateStyleSheet(styleNames, styleProperties) {
 }
 
 function generateAST(code) {
-  const ast = parse(code, options);
+  let ast;
+  try {
+    ast = parse(code, options);
+  } catch (error) {
+    console.log(error);
+    return 'Oops!! error parsing the tree';
+  }
   return ast;
 }
 
@@ -77,6 +79,9 @@ export function convertCode(code) {
   // console.log(typeof code);
   let codeToReturn = '';
   let ast = generateAST(code);
+  if (ast === 'Oops!! error parsing the tree') {
+    return ast;
+  }
   // console.log(ast);
   let objectExpressionArray = []; // stores style object to put in stylesheet.create
   let styleNames = []; // style names
