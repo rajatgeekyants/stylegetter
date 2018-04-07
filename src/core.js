@@ -1,4 +1,4 @@
-import { parse } from 'babylon';
+import {parse} from 'babylon';
 import generate from 'babel-generator';
 import traverse from 'babel-traverse';
 import { throws } from 'assert';
@@ -14,8 +14,8 @@ const options = {
     'classProperties',
     'flow',
     'doExpressions',
-    'objectRestSpread'
-  ]
+    'objectRestSpread',
+  ],
 };
 
 function generateStyleSheet(styleNames, styleProperties) {
@@ -35,10 +35,10 @@ function generateStyleSheet(styleNames, styleProperties) {
                 styleProperties[index]
               );
             })
-          )
+          ),
         ]
       )
-    )
+    ),
   ]);
 }
 
@@ -96,7 +96,7 @@ export function convertCode(code) {
           objectExpressionArray.push(path.node.value.expression);
         }
       }
-    }
+    },
   });
   const generatedStyleSheet = generateStyleSheet(
     styleNames,
@@ -104,7 +104,7 @@ export function convertCode(code) {
   );
   console.log('----STYLESHEET-----');
   const stylesheet = generate(generatedStyleSheet).code;
-  codeToReturn = `\/\/----STYLESHEET----- \n ${stylesheet}`;
+  codeToReturn = `----STYLESHEET----- \n ${stylesheet}`;
   console.log(codeToReturn);
 
   // replacing style object
@@ -115,7 +115,7 @@ export function convertCode(code) {
   const output = generate(ast);
   console.log('----CODE----');
   const outputcode = output.code;
-  codeToReturn = codeToReturn + `\n \/\/----CODE---- \n ${outputcode}`;
+  codeToReturn = codeToReturn + `\n ----CODE---- \n ${outputcode}`;
   console.log(codeToReturn);
   return codeToReturn;
 }
