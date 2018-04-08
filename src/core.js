@@ -1,7 +1,7 @@
-import {parse} from 'babylon';
+import { parse } from 'babylon';
 import generate from 'babel-generator';
-// import { babelTypes } from 'babel-types';
 import traverse from 'babel-traverse';
+import { throws } from 'assert';
 const babelTypes = require('@babel/types');
 
 const uuidv1 = require('uuid/v1');
@@ -14,8 +14,8 @@ const options = {
     'classProperties',
     'flow',
     'doExpressions',
-    'objectRestSpread',
-  ],
+    'objectRestSpread'
+  ]
 };
 
 function generateStyleSheet(styleNames, styleProperties) {
@@ -33,21 +33,23 @@ function generateStyleSheet(styleNames, styleProperties) {
               return babelTypes.objectProperty(
                 babelTypes.identifier(item),
                 styleProperties[index]
-                // babelTypes.objectExpression([
-                //   generateStylePropertyWithValue('height', 40),
-                //   generateStylePropertyWithValue('width', 50)
-                // ])
               );
             })
-          ),
+          )
         ]
       )
-    ),
+    )
   ]);
 }
 
 function generateAST(code) {
-  const ast = parse(code, options);
+  let ast;
+  try {
+    ast = parse(code, options);
+  } catch (error) {
+    console.log(error);
+    return 'Oops!! error parsing the tree';
+  }
   return ast;
 }
 
@@ -77,6 +79,9 @@ export function convertCode(code) {
   // console.log(typeof code);
   let codeToReturn = '';
   let ast = generateAST(code);
+  if (ast === 'Oops!! error parsing the tree') {
+    return ast;
+  }
   // console.log(ast);
   let objectExpressionArray = []; // stores style object to put in stylesheet.create
   let styleNames = []; // style names
@@ -91,26 +96,30 @@ export function convertCode(code) {
           objectExpressionArray.push(path.node.value.expression);
         }
       }
-    },
+    }
   });
-  const generatedStyleSheet = generateStyleSheet(
-    styleNames,
-    objectExpressionArray
-  );
-  console.log('----STYLESHEET-----');
-  const stylesheet = generate(generatedStyleSheet).code;
-  codeToReturn = `----STYLESHEET----- \n ${stylesheet}`;
-  console.log(codeToReturn);
+  if (objectExpressionArray.length > 0) {
+    const generatedStyleSheet = generateStyleSheet(
+      styleNames,
+      objectExpressionArray
+    );
 
-  // replacing style object
-  nodesToReplace.forEach((styleNode, index) => {
-    let replaceWithThis = generateStyles(styleNames[index]);
-    styleNode.replaceWith(replaceWithThis);
-  });
+    console.log('----STYLESHEET-----');
+    const stylesheet = generate(generatedStyleSheet).code;
+    codeToReturn = `//----STYLESHEET----- \n ${stylesheet}`;
+    console.log(codeToReturn);
+
+    // replacing style object
+    nodesToReplace.forEach((styleNode, index) => {
+      let replaceWithThis = generateStyles(styleNames[index]);
+      styleNode.replaceWith(replaceWithThis);
+    });
+  }
+
   const output = generate(ast);
-  console.log('----CODE----');
+  console.log('---CODE---');
   const outputcode = output.code;
-  codeToReturn = codeToReturn + `\n ----CODE---- \n ${outputcode}`;
+  codeToReturn = codeToReturn + `\n//----CODE----\n${outputcode}`;
   console.log(codeToReturn);
   return codeToReturn;
 }
