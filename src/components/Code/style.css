@@ -9,6 +9,7 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  flex: 1 0 auto;
 }
 
 .code-input {
@@ -35,7 +36,7 @@ textarea {
   background-color: white;
   -webkit-rtl-ordering: logical;
   flex-direction: column;
-  resize: auto;
+  resize: none;
   cursor: text;
   white-space: pre-wrap;
   word-wrap: break-word;

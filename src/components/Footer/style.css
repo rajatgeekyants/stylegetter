@@ -1,14 +1,17 @@
+* {
+  box-sizing: border-box;
+}
 .footer {
   display: grid;
   padding: 50px;
   grid-template-columns: 1fr;
   align-items: center;
-  background-color: teal;
   width: 100%;
   height: 8rem;
   bottom: 0%;
   position: relative;
   top: 100%;
+  flex-shrink: 0;
 }
 
 .footerText {
@@ -43,19 +46,24 @@
   margin-right: 1rem;
 }
 
-a {
+a.GeekyAnts-link {
   margin-bottom: 2vh;
   text-decoration-color: black;
   text-decoration: none;
   display: inline-block;
 }
 
-a:visited {
+a.GeekyAnts-link:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a.GeekyAnts-link:visited {
   color: black;
 }
 
-a:hover {
-  color: crimson;
+a.GeekyAnts-link:hover {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -65,11 +73,121 @@ a:hover {
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
   transition-property: transform;
+  animation: color-change 1s infinite;
 }
 
-a:hover,
-a:focus,
-a:active {
+@keyframes color-change {
+  0% {
+    color: crimson;
+  }
+  50% {
+    color: rebeccapurple;
+  }
+  100% {
+    color: crimson;
+  }
+}
+
+a.GeekyAnts-link:hover,
+a.GeekyAnts-link:focus,
+a.GeekyAnts-link:active {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.team-container {
+  padding: 72px 96px;
+  display: flex;
+  flex-direction: row;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+.team-mates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 112px;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.img-container {
+  position: relative;
+  width: 150px;
+  height: 120px;
+}
+
+.image {
+  display: block;
+  width: 150px;
+  height: auto;
+}
+
+.name-container {
+  padding: 2px 28px;
+}
+
+.firstname {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+  text-align: left;
+}
+
+.lastname {
+  font-size: 24px;
+  font-weight: 300;
+  color: black;
+  text-align: left;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  padding-top: 36px;
+}
+
+.social a {
+  margin-right: 12px;
+}
+div {
+  display: block;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
+a.fa-twitter:visited {
+  background: #55acee;
+  color: white;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+a.fa-facebook:visited {
+  background: #3b5998;
+  color: white;
 }
