@@ -57,11 +57,11 @@ export default class Footer extends Component {
                   <div className="lastname">Bansal</div>
                   <div className="social">
                     <a
-                      href="https://twitter.com/geeky_writer_"
+                      href="https://twitter.com/scorpio002"
                       className="fa fa-twitter"
                     />
                     <a
-                      href="https://facebook.com/rajat.k16"
+                      href="https://www.facebook.com/ayush.bansal.984991"
                       className="fa fa-facebook"
                     />
                   </div>
