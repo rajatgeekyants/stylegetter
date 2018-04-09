@@ -1,7 +1,6 @@
 import { parse } from 'babylon';
 import generate from 'babel-generator';
 import traverse from 'babel-traverse';
-import { throws } from 'assert';
 const babelTypes = require('@babel/types');
 
 const uuidv1 = require('uuid/v1');
