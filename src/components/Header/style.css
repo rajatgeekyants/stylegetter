@@ -1,4 +1,6 @@
 #header {
+  display: grid;
+  grid-gap: 20px;
   padding: 1rem;
   align-items: center;
 }
@@ -15,45 +17,13 @@ h2:before {
   display: block;
   content: '';
   height: 10px;
-  -webkit-animation: color-change-before 1s linear infinite;
-  animation: color-change-before 1s linear infinite;
+  background: linear-gradient(to left, #ffc600, transparent);
 }
-
-@keyframes color-change-before {
-  0% {
-    background: linear-gradient(to left, #ffc600, transparent);
-  }
-  33% {
-    background: linear-gradient(to left, #1b9610, transparent);
-  }
-  66% {
-    background: linear-gradient(to left, #255ca3, transparent);
-  }
-  100% {
-    background: linear-gradient(to left, #ffc600, transparent);
-  }
-}
-
 h2:after {
   display: block;
   content: '';
   height: 10px;
-  -webkit-animation: color-change-after 1s linear infinite;
-  animation: color-change-after 1s linear infinite;
-}
-@keyframes color-change-after {
-  0% {
-    background: linear-gradient(to right, #ffc600, transparent);
-  }
-  33% {
-    background: linear-gradient(to right, #1b9610, transparent);
-  }
-  66% {
-    background: linear-gradient(to right, #255ca3, transparent);
-  }
-  100% {
-    background: linear-gradient(to right, #ffc600, transparent);
-  }
+  background: linear-gradient(to right, #ffc600, transparent);
 }
 
 h1,

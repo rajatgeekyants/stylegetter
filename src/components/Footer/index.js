@@ -38,8 +38,12 @@ export default class Footer extends Component {
                       className="fa fa-twitter"
                     />
                     <a
-                      href="https://facebook.com/rajat.k16"
-                      className="fa fa-facebook"
+                      href="https://medium.com/@geeky_writer_"
+                      className="fa fa-medium"
+                    />
+                    <a
+                      href="https://github.com/rajatgeekyants"
+                      className="fa fa-github"
                     />
                   </div>
                 </div>
@@ -61,8 +65,8 @@ export default class Footer extends Component {
                       className="fa fa-twitter"
                     />
                     <a
-                      href="https://www.facebook.com/ayush.bansal.984991"
-                      className="fa fa-facebook"
+                      href="https://github.com/bansalayush"
+                      className="fa fa-github"
                     />
                   </div>
                 </div>
