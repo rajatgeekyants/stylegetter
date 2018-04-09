@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import './style.css';
 
 export default class Footer extends Component {
@@ -9,7 +9,7 @@ export default class Footer extends Component {
           <text className="footerText">
             Made with
             <div id="heart">{'\u2764'}</div>
-            by
+            at
             <img
               className="logo"
               alt="GeekyAnts Logo"
