@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/generator": "^7.0.0-beta.42",
+    "@babel/traverse": "^7.0.0-beta.42",
     "@babel/types": "^7.0.0-beta.42",
-    "babel-traverse": "^6.26.0",
     "browser-sync": "^2.23.6",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
@@ -18,7 +19,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-generator": "^6.26.1",
-    "babel-types": "^6.26.0"
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react-app": "^3.1.1"
   }
 }
