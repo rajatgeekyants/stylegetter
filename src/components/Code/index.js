@@ -38,7 +38,7 @@ export default class Code extends Component {
           className="code-input"
           rows={30}
           cols={160}
-          placeholder="Write Code Here"
+          placeholder="Paste your inline styled code here"
           autoComplete="off"
         />
         <textarea
@@ -50,7 +50,7 @@ export default class Code extends Component {
           className="code-output"
           rows={30}
           cols={160}
-          placeholder="Get StyleSheet from here!"
+          placeholder="And get the StyleSheet from here!"
           autoComplete="off"
         />
       </div>
