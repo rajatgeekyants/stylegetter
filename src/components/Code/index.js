@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './style.css';
-import { convertCode } from '../../core';
+import {convertCode} from '../../core';
 
 export default class Code extends Component {
   constructor(props) {
     super(props);
-    this.state = { codeinput: undefined, outputcode: undefined };
+    this.state = {codeinput: undefined, outputcode: undefined};
   }
   handlePaste(e) {
     var clipboardData, pastedData;
@@ -17,7 +17,7 @@ export default class Code extends Component {
     pastedData = clipboardData.getData('Text');
     // Do whatever with pasteddata
     const generatedCode = convertCode(pastedData);
-    this.setState({ outputcode: generatedCode });
+    this.setState({outputcode: generatedCode});
     // console.log(this.state.outputcode);
   }
 
@@ -38,7 +38,7 @@ export default class Code extends Component {
           className="code-input"
           rows={30}
           cols={160}
-          placeholder="Paste your inline styled code here"
+          placeholder="Paste your React Native code with inline style here"
           autoComplete="off"
         />
         <textarea
