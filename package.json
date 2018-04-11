@@ -10,6 +10,7 @@
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-scripts": "1.1.4",
+    "react-social": "^1.10.0",
     "to-fast-properties": "git://github.com/bansalayush/to-fast-properties.git",
     "uuid": "^3.2.1"
   },
